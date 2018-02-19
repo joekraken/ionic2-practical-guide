@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title> buyout </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1> order </h1>
+    <p> name : {{ item.name }}</p>
+    <p> quantity : {{ item.qty }}</p>
+    <br>
+    <button ion-button (click)='onConfirmOrder()'>buy</button>
+</ion-content>
