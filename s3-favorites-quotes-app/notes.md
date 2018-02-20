@@ -91,7 +91,7 @@ $colors: (
 );
 `
 
-# buttons and menues
+# buttons and menus
 `
 ion-buttons groups several buttons together, useful in a navbar
   <ion-navbar>
