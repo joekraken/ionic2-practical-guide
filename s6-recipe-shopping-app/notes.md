@@ -39,3 +39,14 @@ template-driven: Angular infers the form automatically
 reactive: create form programmatically in code, and you synchronizes HTML and javascript
 
 `
+
+
+# template approach
+`
+
+
+`
+# reactive approach
+`
+programmatically creating the form
+`
