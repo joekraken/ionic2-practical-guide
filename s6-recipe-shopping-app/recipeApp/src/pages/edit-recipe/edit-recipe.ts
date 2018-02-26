@@ -27,13 +27,17 @@ export class EditRecipePage implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.recipeForm);
-    console.log(<string>this.recipeForm.get('ingredients').value);
+    //console.log(this.recipeForm);
+    let ingredients: Ingredient[] = [];
+    let list = this.recipeForm.get('ingredients').value;
+    list.forEach(element => {
+      ingredients.push(new Ingredient(element, 1));
+    });
     this.recipeListSvc.addItem(
       <string>this.recipeForm.get('title').value,
       this.recipeForm.get('description').value as string,
       this.recipeForm.get('difficulty').value as string,
-      this.recipeForm.get('ingredients').value as string[]
+      ingredients
     );
   }
 

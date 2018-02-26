@@ -1,14 +1,23 @@
 import { Ingredient } from './ingredient.model';
 export class Recipe {
-  constructor(public title: string, public description: string, public difficulty: string, public ingredients: string[]) {
+  constructor(public title: string, public description: string, public difficulty: string, public ingredients: Ingredient[]) {
   }
-  updateTitle(value: string) {
+  editTitle(value: string) {
     this.title = value;
   }
-  updateDescription(value: string) {
+  editDescription(value: string) {
     this.description = value;
   }
-  updateDifficulty(value: string) {
+  editDifficulty(value: string) {
     this.difficulty = value;
+  }
+  editIngredients(value: Ingredient[]) {
+    this.ingredients = value;
+  }
+  editAll(title: string, description: string, difficulty: string, ingredients: Ingredient[]) {
+    this.editTitle(title);
+    this.editDescription(description);
+    this.editDifficulty(difficulty);
+    this.editIngredients(ingredients);
   }
 }
