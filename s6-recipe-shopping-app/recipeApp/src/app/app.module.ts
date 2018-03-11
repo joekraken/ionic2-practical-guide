@@ -1,4 +1,4 @@
-import { RecipeListService } from './../services/recipe-list.svc';
+import { RecipesService } from './../services/recipes.svc';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -37,7 +37,7 @@ import { ShoppingListService } from '../services/shopping-list.svc';
     TabsPage
   ],
   providers: [
-    RecipeListService,
+    RecipesService,
     ShoppingListService,
     StatusBar,
     SplashScreen,

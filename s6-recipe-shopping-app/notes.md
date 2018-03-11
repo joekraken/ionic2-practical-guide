@@ -48,5 +48,5 @@ reactive: create form programmatically in code, and you synchronizes HTML and ja
 `
 # reactive approach
 `
-programmatically creating the form
+programmatically creating the form using FormGroup, FormControl, FormArray, ActionSheetController, AlertController, ToastController
 `

@@ -1,4 +1,4 @@
-import { RecipeListService } from './../../services/recipe-list.svc';
+import { RecipesService } from './../../services/recipes.svc';
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
@@ -18,7 +18,7 @@ export class EditRecipePage implements OnInit {
     private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private recipeListSvc: RecipeListService) {
+    private recipeListSvc: RecipesService) {
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class EditRecipePage implements OnInit {
     list.forEach(element => {
       ingredients.push(new Ingredient(element, 1));
     });
-    this.recipeListSvc.addItem(
+    this.recipeListSvc.addRecipe(
       <string>this.recipeForm.get('title').value,
       this.recipeForm.get('description').value as string,
       this.recipeForm.get('difficulty').value as string,

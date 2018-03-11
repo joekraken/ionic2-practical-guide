@@ -1,27 +1,28 @@
 import { Ingredient } from './../models/ingredient.model';
 import { Recipe } from './../models/recipe.model';
 
-export class RecipeListService {
+export class RecipesService {
   private recipes: Recipe[] = [];
 
-  addItem(title: string, description: string, difficulty: string, ingredients: Ingredient[]) {
+  addRecipe(title: string, description: string, difficulty: string, ingredients: Ingredient[]) {
     this.recipes.push(new Recipe(title, description, difficulty, ingredients));
     console.log(this.recipes);
   }
 
-  addItems(items: Recipe[]) {
+  addRecipes(items: Recipe[]) {
     this.recipes.push(...items);
   }
 
-  editItem(index: number, title: string, description: string, difficulty: string, ingredients: Ingredient[]) {
+  updateRecipe(index: number, title: string, description: string, difficulty: string, ingredients: Ingredient[]) {
     this.recipes[index].editAll(title, description, difficulty, ingredients);
+    // this.recipes[index] = new Recipe(title, description, difficulty, ingredients);
   }
   // return a copy of recipes array
-  getItems() {
+  getRecipes() {
     return this.recipes.slice();
   }
 
-  removeItem(index: number) {
+  removeRecipe(index: number) {
     this.recipes.splice(index, 1);
   }
 }
