@@ -27,6 +27,7 @@ export class RecipePage implements OnInit {
   }
 
   onDeleteRecipe() {
+    // test
   }
 
   onEditRecipe() {
