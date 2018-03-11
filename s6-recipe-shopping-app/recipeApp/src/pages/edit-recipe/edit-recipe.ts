@@ -48,12 +48,12 @@ export class EditRecipePage implements OnInit {
       //   ingredients.push(new Ingredient(element, 1));
       // });
     }
-    this.recipeListSvc.addRecipe(
-      value.title,
-      value.description,
-      value.difficulty,
-      ingredients
-    );
+    if (this.mode == 'Edit') {
+      this.recipeListSvc.updateRecipe(this.index, value.title, value.description, value.difficulty, ingredients);
+    }
+    else {
+      this.recipeListSvc.addRecipe(value.title, value.description, value.difficulty, ingredients);
+    }
     //this.recipeListSvc.addRecipe(<string>this.recipeForm.get('title').value, this.recipeForm.get('description').value as string, this.recipeForm.get('difficulty').value as string, ingredients);
 
     this.recipeForm.reset();
