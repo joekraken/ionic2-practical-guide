@@ -51,8 +51,6 @@ export class EditRecipePage implements OnInit {
 
     this.recipeForm.reset();
     this.navCtrl.popToRoot();
-
-    console.log(this.recipeListSvc.getRecipes());
   }
 
   onManageIngredients() {
