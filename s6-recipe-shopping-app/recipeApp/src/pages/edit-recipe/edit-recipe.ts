@@ -1,3 +1,4 @@
+import { NavController } from 'ionic-angular';
 import { RecipesService } from './../../services/recipes.svc';
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
@@ -18,7 +19,8 @@ export class EditRecipePage implements OnInit {
     private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private recipeListSvc: RecipesService) {
+    private recipeListSvc: RecipesService,
+    private navCtrl: NavController) {
   }
 
   ngOnInit() {
@@ -28,17 +30,29 @@ export class EditRecipePage implements OnInit {
 
   onSubmit() {
     //console.log(this.recipeForm);
-    let ingredients: Ingredient[] = [];
-    let list = this.recipeForm.get('ingredients').value;
-    list.forEach(element => {
-      ingredients.push(new Ingredient(element, 1));
-    });
+    const value = this.recipeForm.value;
+    let ingredients = [];
+    // const list = this.recipeForm.get('ingredients').value;
+    if (value.ingredients.length > 0) {
+      ingredients = value.ingredients.map(name => {
+        return {name: name, amount: 1};
+      });
+      // list.forEach(element => {
+      //   ingredients.push(new Ingredient(element, 1));
+      // });
+    }
     this.recipeListSvc.addRecipe(
-      <string>this.recipeForm.get('title').value,
-      this.recipeForm.get('description').value as string,
-      this.recipeForm.get('difficulty').value as string,
+      value.title,
+      value.description,
+      value.difficulty,
       ingredients
     );
+    //this.recipeListSvc.addRecipe(<string>this.recipeForm.get('title').value, this.recipeForm.get('description').value as string, this.recipeForm.get('difficulty').value as string, ingredients);
+
+    this.recipeForm.reset();
+    this.navCtrl.popToRoot();
+
+    console.log(this.recipeListSvc.getRecipes());
   }
 
   onManageIngredients() {
