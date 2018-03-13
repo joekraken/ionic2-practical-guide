@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Shopping List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- #f declare a var to the form -->
+  <form #f='ngForm' (ngSubmit)='onAddItem(f)'>
+    <!-- alternatively use a grid -->
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>name</ion-label>
+        <ion-input type='text' name='ingredientName' placeholder='ingredient' ngModel required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>amount</ion-label>
+        <ion-input type='number' name='amount' placeholder='1' ngModel required></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button type='submit' block [disabled]='!f.valid'>add item</button>
+  </form>
+  <ion-list>
+    <ion-item *ngFor='let item of ingredients; let i = index' (click)='onRemoveItem(i)'>
+      <h3>{{item.name}} ({{item.amount}})</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>
