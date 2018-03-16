@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 
 @Component({
@@ -22,12 +22,12 @@ export class SignupPage implements OnInit {
     console.log('ionViewDidLoad SignupPage');
   }
 
-  onSubmit() {
+  onSignup() {
     const value = this.signupForm.value;
     console.log(value);
 
     this.signupForm.reset();
-    this.navCtrl.popToRoot();
+    // this.navCtrl.popToRoot();
   }
 
   private InitializeForm() {
