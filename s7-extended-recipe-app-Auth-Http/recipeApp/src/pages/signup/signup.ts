@@ -2,6 +2,7 @@ import { OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../services/auth.svc';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { NavController, NavParams } from 'ionic-angular';
 export class SignupPage implements OnInit {
   signupForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  // public params list 1st, private params listed at end
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -25,6 +27,9 @@ export class SignupPage implements OnInit {
   onSignup() {
     const value = this.signupForm.value;
     console.log(value);
+    this.authService.signup(value.email, value.password)
+      .then(data => {console.log('authSvc promise:');console.log(data);})
+      .catch(err => console.log(err));
 
     this.signupForm.reset();
     // this.navCtrl.popToRoot();

@@ -15,6 +15,7 @@ import { ShoppingListPage } from './../pages/shopping-list/shopping-list';
 import { ShoppingListService } from '../services/shopping-list.svc';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
+import { AuthService } from '../services/auth.svc';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SignupPage } from '../pages/signup/signup';
     SignupPage
   ],
   providers: [
+    AuthService,
     RecipesService,
     ShoppingListService,
     StatusBar,

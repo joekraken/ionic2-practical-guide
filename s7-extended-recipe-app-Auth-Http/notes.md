@@ -33,6 +33,7 @@ storing data on server
 # setup firebase
 `
 dev tool for back-end, authentication, etc
+temporarily disable anti-virus and firewall security
 
 ### console
 - npm install --save firebase
