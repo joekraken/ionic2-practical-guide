@@ -9,4 +9,8 @@ export class AuthService {
     // an http req returns a Promise obj
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
+
+  logout() {
+    firebase.auth().signOut(); //logout and delete user's token
+  }
 }
