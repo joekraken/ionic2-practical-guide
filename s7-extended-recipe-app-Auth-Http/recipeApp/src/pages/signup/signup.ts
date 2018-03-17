@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.svc';
 
 
@@ -13,7 +13,8 @@ export class SignupPage implements OnInit {
   signupForm: FormGroup;
 
   // public params list 1st, private params listed at end
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private loadingCtrl: LoadingController, private authService: AuthService, private alertCtrl: AlertController) {
   }
 
   ngOnInit() {
@@ -26,12 +27,28 @@ export class SignupPage implements OnInit {
 
   onSignup() {
     const value = this.signupForm.value;
-    console.log(value);
-    this.authService.signup(value.email, value.password)
-      .then(data => {console.log('authSvc promise:');console.log(data);})
-      .catch(err => console.log(err));
 
-    this.signupForm.reset();
+    const loading = this.loadingCtrl.create({
+      content: 'signing up...'
+    });
+    loading.present();
+    this.authService.signup(value.email, value.password)
+      .then(data => {
+        loading.dismiss();
+        console.log('authSvc promise:');
+        console.log(data);
+      })
+      .catch(err => {
+        loading.dismiss();
+        const alert = this.alertCtrl.create({
+          title: 'signup failed',
+          message: err.message,
+          buttons: ['Ok']
+        });
+        alert.present();
+      });
+
+    //this.signupForm.reset();
     // this.navCtrl.popToRoot();
   }
 

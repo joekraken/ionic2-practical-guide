@@ -1,7 +1,8 @@
 import { OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { AuthService } from '../../services/auth.svc';
 
 @Component({
   selector: 'page-signin',
@@ -10,7 +11,8 @@ import { NavController, NavParams } from 'ionic-angular';
 export class SigninPage implements OnInit {
   signinForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private loadingCtrl: LoadingController, private authService: AuthService, private alertCtrl: AlertController) {
   }
 
   ngOnInit() {
@@ -23,9 +25,23 @@ export class SigninPage implements OnInit {
 
   onSignin() {
     const value = this.signinForm.value;
-    console.log(value);
-
-    this.signinForm.reset();
+    const loading = this.loadingCtrl.create({
+      content: 'signin in...'
+    })
+    this.authService.signin(value.email, value.password)
+      .then(data => {
+        loading.dismiss();
+      })
+      .catch(err => {
+        loading.dismiss();
+        const alert = this.alertCtrl.create({
+          title: 'signin failed',
+          message: err.message,
+          buttons: ['Ok']
+        });
+        alert.present();
+      });
+    //this.signinForm.reset();
     // this.navCtrl.popToRoot();
   }
 
