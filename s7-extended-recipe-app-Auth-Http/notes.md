@@ -22,4 +22,25 @@ storing data on server
 
 `
 
+# authentication in ionic2 app
+`
+- normal webpage use "strong" connection with session
+
+- on web or mobile app: authenticate against a server, issue token stored on client, then the token is sent with requests
+
+`
+
+# setup firebase
+`
+dev tool for back-end, authentication, etc
+
+### console
+- npm install --save firebase
+
+### in app.component.ts import firebase and set values
+import firebase from 'firebase';
+    apiKey: "AIzaSyC4Ko3fxh3_FEua7WNVoK2q-5eJWe7Y7PQ",
+    authDomain: "ionic2-recipe-book-e971f.firebaseapp.com"
+
+`
 
