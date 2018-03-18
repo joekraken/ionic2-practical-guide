@@ -4,6 +4,7 @@ import { ShoppingListService } from '../../services/shopping-list.svc';
 import { Ingredient } from './../../models/ingredient.model';
 import { PopoverController } from 'ionic-angular';
 import { SLOptionsPage } from './sl-options/sl-options';
+import { AuthService } from '../../services/auth.svc';
 
 @Component({
   selector: 'page-shopping-list',
@@ -11,7 +12,9 @@ import { SLOptionsPage } from './sl-options/sl-options';
 })
 export class ShoppingListPage {
   ingredients: Ingredient[];
-  constructor(private shoppingListService: ShoppingListService, private popoverCtrl: PopoverController) {
+  constructor(private shoppingListService: ShoppingListService,
+      private popoverCtrl: PopoverController,
+      private authSvc: AuthService) {
   }
 
   ionViewWillEnter() {
@@ -30,7 +33,27 @@ export class ShoppingListPage {
 
   onShowOptions(event: MouseEvent) {
     const popover = this.popoverCtrl.create(SLOptionsPage);
+    // to display popover at mouse click coordinates
+    // assign to the 'ev' property the current page's event
     popover.present({ev: event});
+    popover.onDidDismiss(data => {
+      if (data.action == 'load') {
+
+      }
+      else if (data.action == 'store') {
+        this.authSvc.getActiveUser().getToken()
+        .then((token:string) => {
+          this.shoppingListService.storeList(token)
+            .subscribe(
+              () => { console.log('success: stored shopping list'); },
+              err => { console.log(err); }
+            )
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      }
+    });
   }
 
   private loadItems() {

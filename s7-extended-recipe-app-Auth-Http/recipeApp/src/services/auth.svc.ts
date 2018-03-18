@@ -13,4 +13,9 @@ export class AuthService {
   logout() {
     firebase.auth().signOut(); //logout and delete user's token
   }
+
+  // get current user
+  getActiveUser() {
+    return firebase.auth().currentUser;
+  }
 }

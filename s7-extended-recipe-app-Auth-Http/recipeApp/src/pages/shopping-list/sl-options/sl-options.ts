@@ -10,6 +10,7 @@ export class SLOptionsPage {
   }
 
   onAction(action: string) {
+    // close popover and pass data to parent page
     this.viewCtrl.dismiss({action: action});
   }
 }
