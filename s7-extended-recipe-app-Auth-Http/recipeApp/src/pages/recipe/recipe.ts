@@ -1,6 +1,6 @@
 import { Recipe } from './../../models/recipe.model';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
 import { EditRecipePage } from './../edit-recipe/edit-recipe';
 import { ShoppingListService } from '../../services/shopping-list.svc';
 import { RecipesService } from './../../services/recipes.svc';

@@ -1,4 +1,4 @@
-import { SLOptionsPage } from './../pages/shopping-list/sl-options/sl-options';
+import { DatabaseOptionsPage } from './../pages/database-options/database-options';
 import { RecipesService } from './../services/recipes.svc';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +29,7 @@ import { AuthService } from '../services/auth.svc';
     TabsPage,
     SigninPage,
     SignupPage,
-    SLOptionsPage
+    DatabaseOptionsPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,7 @@ import { AuthService } from '../services/auth.svc';
     TabsPage,
     SigninPage,
     SignupPage,
-    SLOptionsPage
+    DatabaseOptionsPage
   ],
   providers: [
     AuthService,

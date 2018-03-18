@@ -25,6 +25,11 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
+  setItems(items: Ingredient[]) {
+    this.ingredients = [];
+    this.addItems(items);
+  }
+
   removeItem(index: number) {
     this.ingredients.splice(index, 1);
   }
@@ -34,6 +39,11 @@ export class ShoppingListService {
     // return the Observable after put() executes
     return this.http.put(environment.firebaseUrl + userId + '/shopping-list.json?auth=' + token,
       this.ingredients);
-    // this.http.get('my-url')
+  }
+
+  fetchList(token: string) {
+    const userId = this.authSvc.getActiveUser().uid;
+    // return Observable after get executes
+    return this.http.get(environment.firebaseUrl + userId + '/shopping-list.json?auth=' + token)
   }
 }
