@@ -1,3 +1,4 @@
+import { SLOptionsPage } from './../pages/shopping-list/sl-options/sl-options';
 import { RecipesService } from './../services/recipes.svc';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +27,8 @@ import { AuthService } from '../services/auth.svc';
     EditRecipePage,
     TabsPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SLOptionsPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { AuthService } from '../services/auth.svc';
     EditRecipePage,
     TabsPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    SLOptionsPage
   ],
   providers: [
     AuthService,

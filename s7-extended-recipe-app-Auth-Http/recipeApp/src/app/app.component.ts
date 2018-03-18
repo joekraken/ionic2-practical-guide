@@ -34,7 +34,7 @@ export class MyApp {
       }
       else {
         this.isAuthenticated = false;
-        this.rootPage = SigninPage;
+        this.rootPage = this.signinPage;
       }
     });
     platform.ready().then(() => {
@@ -53,6 +53,7 @@ export class MyApp {
   onLogout() {
     this.authService.logout();
     this.menuCtrl.close();
+    this.nav.setRoot(this.signinPage);
   }
 }
 
