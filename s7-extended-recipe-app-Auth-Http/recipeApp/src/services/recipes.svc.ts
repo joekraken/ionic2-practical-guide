@@ -4,6 +4,7 @@ import { Ingredient } from './../models/ingredient.model';
 import { Recipe } from './../models/recipe.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './environment';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class RecipesService {
@@ -49,5 +50,17 @@ export class RecipesService {
     const userId = this.authSvc.getActiveUser().uid;
     // return Observable after get executes
     return this.http.get(environment.firebaseUrl + userId + '/recipe-list.json?auth=' + token)
+      .pipe(
+        map( data => {
+          let result = data ? data as Recipe[] : new Array<Recipe>();
+
+          for (let item of result) {
+            if (!item.hasOwnProperty('ingredients')) {
+              item.ingredients = new Array<Ingredient>();
+            }
+          }
+          return result;
+        })
+      );
   }
 }

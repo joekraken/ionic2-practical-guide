@@ -46,6 +46,9 @@ export class RecipesPage {
     // assign to the 'ev' property the current page's event
     popover.present({ev: event});
     popover.onDidDismiss(data => {
+      if (!data) {
+        return;
+      }
       if (data.action == 'load') {
         loading.present();
         this.authSvc.getActiveUser().getToken()
