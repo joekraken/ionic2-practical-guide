@@ -1,3 +1,4 @@
+import { Location } from './../../models/location.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -6,10 +7,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'set-location.html',
 })
 export class SetLocationPage {
-  lat: number = 38.5;
-  lng: number = -105.2;
+  loc: Location;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.loc = this.navParams.get('location');
   }
 
   ionViewDidLoad() {

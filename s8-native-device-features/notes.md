@@ -36,3 +36,14 @@ That's it! You can read more in the official docs: https://angular-maps.com/guid
 # cli commands for google map setup
 - npm install --save @agm/core
 
+# location test data:
+`
+## Canon City, CO
+  lat: number = 38.431;
+  lng: number = -105.249;
+
+
+## NYC
+  lat: number = 40.762;
+  lng: number = -73.975;
+`
