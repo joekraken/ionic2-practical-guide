@@ -94,3 +94,10 @@ this.http.get('my-url')
 That's it. With these steps, you're using the new HttpClient and everything should work just as shown in the videos!
 
 `
+
+# building & running on device
+`
+run cli command before loading in android studio or xcode
+- ionic build android (or ios)
+
+`
