@@ -10,3 +10,5 @@
 - ionic generate page place
 - ionic generate page add-place
 - ionic generate page set-location
+
+
