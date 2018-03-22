@@ -10,8 +10,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 })
 export class AddPlacePage {
   loc: Location = {
-    lat: 38.5,
-    lng: -105.2
+    lat: 38.438845,
+    lng: -105.242047
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {

@@ -39,8 +39,8 @@ That's it! You can read more in the official docs: https://angular-maps.com/guid
 # location test data:
 `
 ## Canon City, CO
-  lat: number = 38.431;
-  lng: number = -105.249;
+  lat: number = 38.438845;
+  lng: number = -105.242047;
 
 
 ## NYC
