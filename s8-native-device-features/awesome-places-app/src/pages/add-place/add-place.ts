@@ -14,6 +14,8 @@ export class AddPlacePage {
     lng: -105.242047
   };
 
+  location: Location;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
   }
 
@@ -27,6 +29,12 @@ export class AddPlacePage {
 
   onOpenMap() {
     const modal = this.modalCtrl.create(SetLocationPage, {location: this.loc});
+    modal.onDidDismiss(data => {
+      if (data) {
+        console.log(data);
+        this.location = data;
+      }
+    })
     modal.present();
   }
 
